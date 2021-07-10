@@ -1,6 +1,9 @@
 <template>
     <div>
-        <b-navbar toggleable="sm" type="dark" style="background-color: #563d7c;">
+        <transition name="left">
+            <Shopcategory class="slide" v-if="shopshow"/>
+        </transition>
+        <b-navbar toggleable="sm" class="navbar-dark" style="background-color: #f44336; color:#ffffff;">
             <b-navbar-toggle target="nav-collapse" class="mr-auto"></b-navbar-toggle>
             <b-navbar-brand href="/">
                 
@@ -10,7 +13,7 @@
             
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav>
-                    <b-nav-item href="/findshop">お店を探す</b-nav-item>
+                    <b-nav-item @click="openshops" class="entranceShop">お店を探す</b-nav-item>
                     <!-- <b-nav-item-dropdown text="お店を探す" right>
                         <b-dropdown-item href="#">EN</b-dropdown-item>
                         <b-dropdown-item href="#">ES</b-dropdown-item>
@@ -32,3 +35,43 @@
         </b-navbar>
     </div>
 </template>
+
+<script>
+export default({
+    data() {
+        return{
+            shopshow: false
+        };
+        
+    },
+    mounted() {
+        window.addEventListener('click', this.closeShops);
+    },
+    beforeDestroy() {
+        window.removeEventListener('click', this.closeShops);
+    },
+    methods:{
+        openshops: function(){
+            this.shopshow = true;
+        },
+        closeShops: function(event) {
+            if (!this.$el.querySelector('.slide').contains(event.target) && !this.$el.querySelector('.entranceShop').contains(event.target)) {
+                this.shopshow = false;
+      }
+    }
+    }
+})
+</script>
+
+<style>
+.slide{
+    z-index: 10;
+}
+.left-enter-active, .left-leave-active {
+  transform: translate(0px, 0px);
+  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+}
+.left-enter, .left-leave-to {
+  transform: translateX(-100vw) translateX(0px);
+}
+</style>
