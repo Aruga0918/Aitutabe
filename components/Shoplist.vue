@@ -2,7 +2,7 @@
     <b-container class="commlist" >
     <div class="d-flex" style="align-items: center; justify-content: center; border-top-style: ridge; border-bottom-style: groove; height: 150px;" v-for="shop in shops" :key="shop.name">
     <div class="d-flex" style="align-items: center; width: 70%;">
-        <img src="https://placekitten.com/g/30/30" class="d-inline-block" style="border-radius: 50%; height: 60px; width: 60px; float:left">
+        <img :src="shop.img" class="d-inline-block" style="height: 100px; width: 100px; float:left">
             <div class="d-inline-block ml-auto mr-auto" style="width:260px">
                 <p class="d-inline ml-auto">{{shop.name}}</p>
                 <p style="font-size: 6px;">{{shop.opentime}}</p>
