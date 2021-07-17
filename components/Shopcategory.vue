@@ -11,6 +11,7 @@
         <p><router-link to="/shops_ramen" class="sidebar-link">ラーメン</router-link></p>
         <p><router-link to="/shops_cafe" class="sidebar-link">カフェ</router-link></p>
         <p><router-link to="/shop_oteher" class="sidebar-link">その他</router-link></p>
+        
       </div>
     </div>
   </div>
